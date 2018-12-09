@@ -1,0 +1,37 @@
+<ion-app>
+    <ion-router-outlet></ion-router-outlet>
+
+    <ion-content>
+
+        <!--バインディング　大きく分けて4種類-->
+        <!--1: Interpolation(補間)、
+            2: プロパティバインディング、
+            3: イベントバインディングが One-way、
+            4: 双方向バインディングのみ、Two-way-->
+        　　　　 <!--Component と View 間で、値を同期することができる、ViewModel のような存在-->
+        　<!--プロパティバインディングの構文と、イベントバインディングの構文を組み合わせた形-->
+        <!--補足
+            フォーム機能(<form>、<input>)を利用する場合には、@NgModuleに FormsModuleを追加する必要があるので、注意
+            これが不足していた場合、input要素にngModelを記述した場合、エラーになる。-->
+
+        <!--二重の波括弧::Angularの補間バインディングの構文-->
+        <h1>{{title}}</h1>
+
+
+        <!--ルーティング：ナビゲーションのリンクを貼り付ける-->
+        <nav>
+            <a routerLink="/dashboard">Dashboard</a>
+            <a routerLink="/heroes">Heroes</a>
+        </nav>
+
+        <!--<app-heroes></app-heroes>
+            RouterOutlet を追加するため、削除する
+            「RouterModule」をエクスポートした「AppRoutingModule」を「AppModule」がインポートしているので、
+            この「RouterOutlet」は、このAppComponentで利用できるようになったルーターのディレクティブのひとつです。
+        -->
+
+        <router-outlet></router-outlet>
+    </ion-content>
+
+
+</ion-app>

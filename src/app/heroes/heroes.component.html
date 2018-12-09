@@ -1,0 +1,71 @@
+  <!--<ion-content>-->
+    <!--{{hero}}-->
+    <!--<h2>{{hero.name | uppercase}} Details</h2>-->
+    <!--<div>-->
+    <!--<span>id: </span>{{selectedHero.id}}</div>-->
+    <!--&lt;!&ndash;<div><span><name></name>: </span>{{hero.name}}</div>&ndash;&gt;-->
+    <!--<div>-->
+      <!--<label>name:-->
+        <!--&lt;!&ndash;Angularの双方向データバインディング構文&ndash;&gt;-->
+        <!--<input [(ngModel)]="selectedHero.name" placeholder="name">-->
+      <!--</label>-->
+    <!--</div>-->
+
+    <h2>My Heroes</h2>
+
+      <!--新しいヒーロー追加ボタンを挿入-->
+      <div>
+          <label>Hero name:
+              <input #heroName />
+          </label>
+          <!-- (click) 入力値をadd()に渡したあと、入力をクリアする -->
+          <button (click)="add(heroName.value); heroName.value=''">
+              add
+          </button>
+      </div>
+
+    <ul class="heroes">
+      <!--*ngFor はAngularの 繰り返し ディレクティブ-->
+      <!--class.selected　選択された項目に色付け-->
+
+      <!--ルーティング適用前-----------------
+      <li *ngFor="let hero of heroes"
+          [class.selected]="hero === selectedHero"
+          (click)="onSelect(hero)">
+        <span class="badge">{{hero.id}}</span> {{hero.name}}
+      </li>
+      →「onSelect」「selectedHeroプロパティ」　は使用しなくなるので削除する
+      <!--ルーティング適用前------------------>
+
+        <!--適用後-->
+        <!--削除ボタンの追加-->
+        <li *ngFor="let hero of heroes">
+            <a routerLink="/detail/{{hero.id}}">
+                <span class="badge">{{hero.id}}</span> {{hero.name}}
+            </a>
+            <button class="delete" title="delete hero"
+            (click)="delete(hero)">XXX</button>
+        </li>
+    </ul>
+
+    <!--親から子へ移植するため、コメントアウト-->
+    <!--<div *ngIf="selectedHero">-->
+      <!--<h2>{{selectedHero.name | uppercase}} Details</h2>-->
+      <!--<div><span>id: </span>{{selectedHero.id}}</div>-->
+      <!--<div>-->
+        <!--<label>name:-->
+          <!--<input [(ngModel)]="selectedHero.name" placeholder="name">-->
+        <!--</label>-->
+      <!--</div>-->
+    <!--</div>---------------------------->
+
+
+    <!--親の HeroesComponent が
+        子のHeroDetailComponent を制御できるように、
+        プロパティバインディングを使用しました。-->
+    <!--<app-hero-detail [hero]="selectedHero"></app-hero-detail>-->
+
+
+    <app-messages></app-messages>
+  <!--</ion-content>-->
+<!--</ion-app>-->

@@ -1,0 +1,17 @@
+<h3>Top Heroes</h3>
+<div class="grid grid-pad">
+
+  <!--ルーターは HeroDetailComponentへのルートを持っているので、
+  ダッシュボードのヒーローのリンクを修正して、パラメータ付きダッシュボードのルート経由で遷移-->
+
+  <!--*ngForリピーター内でAngularの補間バインディング {{}} を使用していて、 現在の繰り返しの hero.idを個々のrouterLinkに挿入します。-->
+  <a *ngFor="let hero of heroes" class="col-1-4"
+     routerLink="/detail/{{hero.id}}"
+  >
+    <div class="module hero">
+      <h4>{{hero.name}}</h4>
+    </div>
+  </a>
+</div>
+
+<app-hero-search></app-hero-search>
